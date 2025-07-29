@@ -5,5 +5,5 @@ resource "aws_vpc_ipv4_cidr_block_association" "secondary_cidr" {
 }
 
 output "vpc" {
-  value =  [for k,v in aws_vpc.main:v.id]
+  value =  [for k,v in aws_vpc.main : v.id]
 }
