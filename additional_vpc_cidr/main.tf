@@ -4,6 +4,3 @@ resource "aws_vpc_ipv4_cidr_block_association" "secondary_cidr" {
   cidr_block = element(var.additional_cidr_block,count.index)
 }
 
-output "vpc" {
-  value =  [for k,v in aws_vpc.main : v.id]
-}
