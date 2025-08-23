@@ -6,12 +6,29 @@ module "lm-subnets" {
   env = var.env
   name = each.value.name
   subnet_availability_zones = var.subnet_availability_zones
+  route_table_id = lookup(lookup(aws_route_table.route_table,each.value.name, null ), "id", null)
 }
 
 resource "aws_route_table" "route_table" {
   for_each = var.subnets
   vpc_id = var.vpc_id[0]
   tags = {
-    Name = each.value.Name
+    Name    = "${var.env}-${each.value.name}-rt"
+    ENV     = var.env
+    PROJECT = "roboshop"
   }
+}
+resource "aws_route" "peering_connection_route" {
+  for_each = var.subnets
+  route_table_id         = lookup(lookup(aws_route_table.route_table,each.value.name, null ), "id", null)
+  destination_cidr_block = lookup(var.management_vpc, "vpc_cidr", null )
+  vpc_peering_connection_id = var.peering_connection_id
+
+}
+#output "subnets" {
+#  value = module.lm-subnets
+#}
+
+output "route_tables" {
+  value = aws_route_table.aws_route_table
 }
