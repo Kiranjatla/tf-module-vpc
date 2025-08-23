@@ -13,5 +13,5 @@ module "additional_cidr_block" {
 }
 
 output "vpc" {
-  value =
-}[for k,v in aws_vpc.main : v.id]
+  value = [for k,v in aws_vpc.main : v.id]
+}
