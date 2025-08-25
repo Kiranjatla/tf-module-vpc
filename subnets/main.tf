@@ -18,6 +18,7 @@ resource "aws_route_table" "route_table" {
     PROJECT = "roboshop"
   }
 }
+##Here we are adding route for peering connection
 resource "aws_route" "peering_connection_route" {
   for_each = var.subnets
   route_table_id         = lookup(lookup(aws_route_table.route_table,each.value.name, null ), "id", null)
@@ -25,9 +26,9 @@ resource "aws_route" "peering_connection_route" {
   vpc_peering_connection_id = var.peering_connection_id
 
 }
-#output "subnets" {
-#  value = module.lm-subnets
-#}
+output "subnets" {
+  value = module.lm-subnets
+}
 
 #output "route_tables" {
 #  value = aws_route_table.aws_route_table
