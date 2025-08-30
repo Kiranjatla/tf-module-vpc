@@ -39,5 +39,5 @@ resource "aws_route" "nat_gateway_route_to_private_subnets" {
   count = length(local.private_route_tables)
   route_table_id            = element(local.private_route_tables, count.index)
   destination_cidr_block    = "0.0.0.0/0"
-  gateway_id = aws_internet_gateway.gw[0].id
+  gateway_id = aws_nat_gateway.ngw[0].id
 }
