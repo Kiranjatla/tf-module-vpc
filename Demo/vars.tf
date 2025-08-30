@@ -10,5 +10,5 @@ variable "demo"{
 }
 
 output "demo" {
-  value = var.demo
+  value = var.demo[*].id
 }
