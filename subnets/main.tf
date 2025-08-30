@@ -6,10 +6,10 @@ module "lm-subnets" {
   env = var.env
   name = each.value.name
   subnet_availability_zones = var.subnet_availability_zones
-  route_table_id = lookup(lookup(aws_route_table.route_table,each.value.name, null ), "id", null)
+  route_table_id = lookup(lookup(aws_route_table.aws_route_table,each.value.name, null ), "id", null)
 }
 
-resource "aws_route_table" "route_table" {
+resource "aws_route_table" "aws_route_table" {
   for_each = var.subnets
   vpc_id = var.vpc_id[0]
   tags = {
@@ -21,7 +21,7 @@ resource "aws_route_table" "route_table" {
 ##Here we are adding route for peering connection
 resource "aws_route" "peering_connection_route" {
   for_each = var.subnets
-  route_table_id         = lookup(lookup(aws_route_table.route_table,each.value.name, null ), "id", null)
+  route_table_id         = lookup(lookup(aws_route_table.aws_route_table,each.value.name, null ), "id", null)
   destination_cidr_block = lookup(var.management_vpc, "vpc_cidr", null )
   vpc_peering_connection_id = var.peering_connection_id
 }
@@ -40,10 +40,15 @@ output "subnets" {
   value = local.subnets_list[*].id
 }
 
+output "rt" {
+  value = {
+    for k,v in aws_route_table.aws_route_table : k => v.id
+  }
+}
+
 #output "subnets" {
 #  value = flatten([for i,j in module.lm-subnets: j.subnets])
 #}
-
 
 #output "route_tables" {
 #  value = aws_route_table.aws_route_table
