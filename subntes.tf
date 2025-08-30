@@ -10,7 +10,9 @@ module "subnets" {
   internet_gateway_id       = aws_internet_gateway.gw.*.id[0]
 }
 
-
+output "subnets" {
+  value = module.subnets
+}
 
 
 #module "public_subnets" {
