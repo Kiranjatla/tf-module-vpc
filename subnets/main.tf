@@ -24,10 +24,13 @@ resource "aws_route" "peering_connection_route" {
   route_table_id         = lookup(lookup(aws_route_table.route_table,each.value.name, null ), "id", null)
   destination_cidr_block = lookup(var.management_vpc, "vpc_cidr", null )
   vpc_peering_connection_id = var.peering_connection_id
+}
 
+locals {
+  subnets_list = flatten([for i,j in module.lm-subnets : j.subnets])
 }
 output "subnets" {
-  value = flatten([for i,j in module.lm-subnets : j.subnets])
+  value = local.subnets_list[*].id
 }
 
 #output "route_tables" {
