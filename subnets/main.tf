@@ -33,19 +33,18 @@ resource "aws_route" "peering_connection_route" {
 #}
 
 
+locals {
+  subnets_list = flatten([for i,j in module.lm-subnets : j.subnets])
+}
+output "subnets" {
+  value = local.subnets_list[*].id
+}
 
-
-#
-#locals {
-#  subnets_list = flatten([for i,j in module.lm-subnets : j.subnets])
-#}
 #output "subnets" {
-#  value = local.subnets_list[*].id
+#  value = flatten([for i,j in module.lm-subnets: j.subnets])
 #}
+
 
 #output "route_tables" {
 #  value = aws_route_table.aws_route_table
 #}
-output "subnets" {
-  value = [for i,j in module.lm-subnets: j.subnets]
-}
