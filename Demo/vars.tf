@@ -1,4 +1,4 @@
-varaiable "demo"{
+variable "demo"{
   default = [
     {
       "id" = "xyz"
