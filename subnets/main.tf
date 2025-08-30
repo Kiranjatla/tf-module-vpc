@@ -47,5 +47,5 @@ resource "aws_route" "peering_connection_route" {
 #  value = aws_route_table.aws_route_table
 #}
 output "subnets" {
-  value = module.lm-subnets
+  value = [for i,j in module.lm-subnets: j]
 }
