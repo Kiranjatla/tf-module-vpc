@@ -9,10 +9,10 @@ resource "aws_eip" "ngw" {
     vpc  =  true
 }
 
-resource "aws_nat_gateway" "ngw" {
-  allocation_id = aws_eip.ngw.id
-  subnet_id = "aws_subnet.ngw.id"
-  tags = {
-    Name = "${var.env}-ngw"
-  }
-}
+#resource "aws_nat_gateway" "ngw" {
+#  allocation_id = aws_eip.ngw.id
+#  subnet_id = "aws_subnet.ngw.id"
+#  tags = {
+#    Name = "${var.env}-ngw"
+#  }
+#}

@@ -26,9 +26,6 @@ module "private_subnets" {
 #  value = module.public_subnets
 #}
 #
-output "private_subnets" {
-  value = module.private_subnets
-}
 
 #output "subnets" {
 #  value = module.lm-subnets
