@@ -8,7 +8,7 @@ resource "aws_internet_gateway" "gw" {
 }
 
 resource "aws_eip" "ngw" {
-  vpc = true
+
 }
 
 resource "aws_nat_gateway" "ngw" {
