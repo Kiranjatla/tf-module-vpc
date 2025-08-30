@@ -6,10 +6,10 @@ resource "aws_internet_gateway" "gw" {
     Name = "${var.env}-igw"
   }
 }
-
-resource "aws_eip" "ngw" {
-    vpc  =  true
-}
+#
+#resource "aws_eip" "ngw" {
+#    vpc  =  true
+#}
 
 ##resource "aws_nat_gateway" "ngw" {
 ##  allocation_id = aws_eip.ngw.id
