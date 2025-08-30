@@ -8,13 +8,15 @@ resource "aws_internet_gateway" "gw" {
 }
 
 resource "aws_eip" "ngw" {
+  vpc = true
 }
 
 resource "aws_nat_gateway" "ngw" {
   allocation_id = aws_eip.ngw.id
   subnet_id = local.public_subnets_list[0]
+
   tags = {
-    Name = "${var.env}-ngw"
+    Name = "NAT GW"
   }
 }
 
