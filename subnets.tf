@@ -25,8 +25,6 @@ module "private_subnets" {
 
 
 
-
-
 #output "subnets" {
 #  value = module.lm-subnets
 #}
