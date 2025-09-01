@@ -5,6 +5,16 @@ resource "aws_subnet" "main" {
   tags = local.subnet_tags
   availability_zone = element(var.subnet_availability_zones, count.index)
 }
+
+resource "aws_route_table" "aws_route_table" {
+  vpc_id = var.vpc_id
+  tags = {
+    Name    = "${var.env}-${var.name}-rt"
+    ENV     = var.env
+    PROJECT = "roboshop"
+  }
+}
+
 #resource "aws_route_table_association" "route_table_association" {
 #  count          = length(aws_subnet.main)
 #  subnet_id      = element(aws_subnet.main.*.id, count.index)
@@ -14,13 +24,6 @@ resource "aws_subnet" "main" {
 output "subnets" {
   value = aws_subnet.main
 }
-
-
-
-
-
-
-
 
 
 #module "lm-subnets" {
