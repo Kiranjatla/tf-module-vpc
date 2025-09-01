@@ -3,7 +3,6 @@ module "private_subnets" {
  source     = "./subnets"
  cidr_block = each.value.cidr_block
  vpc_id     = = aws_vpc.main.id
-main.id
 env = var.env
 name = each.value.name
 subnet_availability_zones = var.subnet_availability_zones
