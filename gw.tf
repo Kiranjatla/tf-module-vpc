@@ -1,3 +1,30 @@
+resource "aws_internet_gateway" "igw" {
+  vpc_id = aws_vpc.main.id
+
+  tags = {
+    Name = "${var.env}-igw"
+  }
+}
+
+resource "aws_eip" "ngw" {
+
+}
+
+#resource "aws_nat_gateway" "ngw" {
+#  allocation_id = aws_eip.ngw.id
+#  subnet_id = local.public_subnets_list[0]
+#
+#  tags = {
+#    Name = "NAT GW"
+#  }
+#}
+
+
+
+
+
+
+
 #resource "aws_internet_gateway" "gw" {
 #  count = length(local.vpc_ids)
 #  vpc_id = element(local.vpc_ids, count.index)
