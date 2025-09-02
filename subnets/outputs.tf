@@ -2,7 +2,7 @@ output "subnets" {
   value = aws_subnet.main
 }
 
-output "rute_tables" {
+output "route_tables" {
   value = aws_route_table.aws_route_table
 }
 
