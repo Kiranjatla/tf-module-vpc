@@ -14,6 +14,9 @@ output "all_route_tables" {
   value = local.all_route_tables
 }
 
+#output "app_subnets" {
+#  value = [ for
+#}
 ##output "subnets" {
 ##  value = module.subnets
 ##}
