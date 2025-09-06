@@ -14,6 +14,10 @@ output "all_route_tables" {
   value = local.all_route_tables
 }
 
+
+output "vpc_id" {
+  value = aws_vpc.main.id
+}
 #output "app_subnets" {
 #  value = [ for
 #}
