@@ -5,7 +5,7 @@ variable "abc" {
     "one" = {
       x = 100
     }
-    "one" = {
+    "two" = {
       x = 120
     }
   }
@@ -15,7 +15,7 @@ variable "xyz" {
     "one" = {
       y = 200
     }
-    "one" = {
+    "two" = {
       y = 220
     }
   }
