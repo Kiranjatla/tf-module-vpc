@@ -27,7 +27,7 @@ locals {
       x = 100
     }
     two = {
-      x = 100
+      x = 120
     }
   }
   subnet_feature1 = {
