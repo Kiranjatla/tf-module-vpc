@@ -45,7 +45,7 @@ output "calc_map" {
   value = {
        for i in keys(var.xyz) : i => {
            x = var.abc[i].x
-           y = var.abc[i].y
+           y = var.xyz[i].y
   }
   }
 }
