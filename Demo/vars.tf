@@ -42,12 +42,12 @@ locals {
 
 
 output "calc_map" {
-  value = tomap({
-       for i in key(var.xyz) : i => {
+  value = {
+       for i in keys(var.xyz) : i => {
            x = var.abc[i].x
            y = var.abc[i].y
   }
-  })
+  }
 }
 
 
