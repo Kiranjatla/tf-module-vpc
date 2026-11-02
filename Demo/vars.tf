@@ -21,6 +21,17 @@ variable "xyz" {
   }
 }
 
+
+output "calc_map" {
+  value = tomap({
+       for i in keys(var.xyz) : i => {
+           x = var.abc[i].x
+           y = var.xyz[i].y
+  }
+  })
+}
+
+
 locals {
   local = {
     one = {
@@ -39,19 +50,6 @@ locals {
     }
   }
 }
-
-
-output "calc_map" {
-  value = tomap({
-       for i in keys(var.xyz) : i => {
-           x = var.abc[i].x
-           y = var.xyz[i].y
-  }
-  })
-}
-
-
-
 
 
 
